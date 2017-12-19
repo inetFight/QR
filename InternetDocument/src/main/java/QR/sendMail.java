@@ -14,6 +14,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.MimeUtility;
 
 public class sendMail {
 	
@@ -46,7 +47,7 @@ public class sendMail {
         String fileName = filename;
         DataSource source = new FileDataSource(file);
         messageBodyPart.setDataHandler(new DataHandler(source));
-        messageBodyPart.setFileName(fileName);
+        messageBodyPart.setFileName(MimeUtility.encodeText(fileName));
         multipart.addBodyPart(messageBodyPart);
         
         
@@ -69,7 +70,7 @@ public class sendMail {
     private class SMTPAuthenticator extends javax.mail.Authenticator {
         public PasswordAuthentication getPasswordAuthentication() {
            String username = "litvinov.do@novaposhta.ua";
-           String password = "QW0500481222";
+           String password = "qw0500481222";
            return new PasswordAuthentication(username, password);
         }
     }

@@ -24,15 +24,15 @@ public class App {
 			
 		  
 		    
-//		    String shortUrl = getShortUrl.getShortURLFromGoogle("https://ap69r.app.goo.gl/?link=https://novaposhta/queue/?warehouse_ref=" + warehouse.get(j).getRef() + "&apn=ua.novaposhtaa&isi=545980774&ibi=com.novaposhta.novaposhta&ius=novaposhta");
-//			generateQR.generateQRcode(shortUrl, 793, warehouse.get(j).getCity() + ", №" + warehouse.get(j).getNumber() + " - big");
+		    String shortUrl = getShortUrl.getShortURLFromGoogle("https://ap69r.app.goo.gl/?link=https://novaposhta/queue/?warehouse_ref=" + warehouse.get(j).getRef() + "&apn=ua.novaposhtaa&isi=545980774&ibi=com.novaposhta.novaposhta&ius=novaposhta");
+			generateQR.generateQRcode(shortUrl, 793, warehouse.get(j).getCity() + ", №" + warehouse.get(j).getNumber() + " - big");
 //			generateQR.generateQRcode(shortUrl, 559, warehouse.get(j).getCity()  + ", №" + warehouse.get(j).getNumber() + "- small");
 
 			
 //			new sendMail().test("E:\\QR\\" + warehouse.get(j).getRef() + ".png", warehouse.get(j).getRef() + ".png", "danylik.a@novaposhta.ua");
 //			new sendMail().test("E:\\QR\\" + ref + ".png", ref + ".png", mail);
-//			new sendMail().test("E:\\QR\\" + warehouse.get(j).getRef() + ".png", warehouse.get(j).getRef() + ".png", "litvinov.do@novaposhta.ua");
-//			break;
+			new sendMail().test("E:\\QR\\" + warehouse.get(j).getCity() + ", №" + warehouse.get(j).getNumber() + " - big" + ".png", warehouse.get(j).getCity() + ", №" + warehouse.get(j).getNumber() + " - big" + ".png", "litvinov.do@novaposhta.ua");
+			break;
 		   
 		}
 
