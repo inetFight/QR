@@ -52,7 +52,7 @@ public class generateQR {
 	public static void generateQRcode (String QR, int sizeQR, String nameQR){
 
 		String myCodeText = QR;
-		String filePath = "E:\\QR\\" + nameQR + ".png";
+		String filePath = "D:\\QR\\" + nameQR + ".png";
 		int size = sizeQR;
 		String fileType = "png";
 		File myFile = new File(filePath);

@@ -10,12 +10,12 @@ import java.util.HashMap;
 
 public class ReadFileHeadOffice {
 	
-	public static HashMap readFileToListByLine() {
+	public static ArrayList readFileToListByLine() {
 		String csvFile = "E:\\QR\\Doc\\Mails.csv";
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ";";
-		HashMap<String, String> map = new HashMap();
+//		HashMap<String, String> map = new HashMap();
 		ArrayList<EmailModel> tmp = new ArrayList<EmailModel>();
 		int cnt = 0;
 		int cntFail = 0;
@@ -29,10 +29,10 @@ public class ReadFileHeadOffice {
 				String[] EH = line.split(cvsSplitBy);
 				String Ref = EH[0];
 				String Mail = EH[3];
-//				EmailModel obj = new EmailModel(Ref, Mail);
-				map.put(Ref, Mail);
+				EmailModel obj = new EmailModel(Ref, Mail);
+//				map.put(Ref, Mail);
 
-//				tmp.add(obj);
+				tmp.add(obj);
 				
 					cnt += 1;
 
@@ -61,8 +61,8 @@ public class ReadFileHeadOffice {
 				}
 			}
 		}
-		 System.out.println("В файле найдено " + cnt + " строчек, загрузка успешна. В коллекции " + map.size() +  " fails " + cntFail);
-		return map;
+		 System.out.println("В файле найдено " + cnt + " строчек, загрузка успешна. В коллекции " + tmp.size() +  " fails " + cntFail);
+		return tmp;
 	}
 
 }

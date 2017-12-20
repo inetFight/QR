@@ -1,4 +1,5 @@
 package QR;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -18,11 +19,12 @@ import javax.mail.internet.MimeUtility;
 
 public class sendMail {
 	
-	public void test(String fileURL, String filename, String recipient) throws Exception{
+	public void test(String fileURL, String filename, String fileURL2, String filename2, ArrayList<String> recipient) throws Exception{
         Properties props = new Properties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.host", "smtp.novaposhta.ua");
         props.put("mail.smtp.auth", "true");
+
 
         Authenticator auth = new SMTPAuthenticator();
         Session mailSession = Session.getDefaultInstance(props, auth);
@@ -32,32 +34,45 @@ public class sendMail {
 
         MimeMessage message = new MimeMessage(mailSession);
         message.setSubject("Testing Subject");
-//        message.setText("ууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууу");
+
 
         
         message.setFrom(new InternetAddress("litvinov.do@novaposhta.ua"));
-        message.addRecipient(Message.RecipientType.TO,
-             new InternetAddress(recipient));
-        MimeBodyPart messageBodyPart = new MimeBodyPart();
-
-        Multipart multipart = new MimeMultipart();
+        for (int i = 0; i < recipient.size(); i++) {
+        	message.addRecipient(Message.RecipientType.TO,
+                    new InternetAddress(recipient.get(i)));
+		}
         
+      //Первый файл
+        MimeBodyPart messageBodyPart = new MimeBodyPart();        
+        Multipart multipart = new MimeMultipart();        
         messageBodyPart = new MimeBodyPart();
         String file = fileURL;
         String fileName = filename;
         DataSource source = new FileDataSource(file);
         messageBodyPart.setDataHandler(new DataHandler(source));
         messageBodyPart.setFileName(MimeUtility.encodeText(fileName));
-        multipart.addBodyPart(messageBodyPart);
+        //второй файл
+        MimeBodyPart messageBodyPart2 = new MimeBodyPart();
+        Multipart multipart2 = new MimeMultipart();
+       
+        messageBodyPart2 = new MimeBodyPart();
+        String file2 = fileURL2;
+        String fileName2 = filename2;
+        DataSource source2 = new FileDataSource(file2);
+        messageBodyPart2.setDataHandler(new DataHandler(source2));
+        messageBodyPart2.setFileName(MimeUtility.encodeText(fileName2));
+        
+        multipart2.addBodyPart(messageBodyPart2);
         
         
         MimeBodyPart textBodyPart = new MimeBodyPart();
         textBodyPart.setText("Распечатать и наклеить");
         multipart.addBodyPart(textBodyPart);
-        
+
         
         message.setContent(multipart);
-        
+        message.setContent(multipart2);
         
         
         transport.connect();
