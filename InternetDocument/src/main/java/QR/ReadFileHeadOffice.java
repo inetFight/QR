@@ -24,26 +24,22 @@ public class ReadFileHeadOffice {
 			 br = new BufferedReader(new InputStreamReader(new FileInputStream(csvFile), "UTF-8"));
 //			br = new BufferedReader(new FileReader(csvFile));
 			while ((line = br.readLine()) != null) {
+					
+					// use comma as separator
+					String[] EH = line.split(cvsSplitBy);
 
-				// use comma as separator
-				String[] EH = line.split(cvsSplitBy);
-				String Ref = EH[0];
-				String Mail = EH[3];
-				EmailModel obj = new EmailModel(Ref, Mail);
-//				map.put(Ref, Mail);
+					String Ref = EH[9];
+					String Mail = EH[7];
+					EmailModel obj = new EmailModel(Ref, Mail);
+//					map.put(Ref, Mail);
 
-				tmp.add(obj);
-				
+					tmp.add(obj);
+					
 					cnt += 1;
+				
+				
 
 		
-				
-					
-
-					
-					
-				
-
 				
 			}
 //			System.out.println("В файле найдено " + cnt + " строчек, загрузка успешна. В коллекции " + heads.size() );

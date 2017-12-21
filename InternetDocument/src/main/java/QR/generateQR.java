@@ -52,7 +52,7 @@ public class generateQR {
 	public static void generateQRcode (String QR, int sizeQR, String nameQR){
 
 		String myCodeText = QR;
-		String filePath = "D:\\QR\\" + nameQR + ".png";
+		String filePath = "E:\\QR\\" + nameQR + ".png";
 		int size = sizeQR;
 		String fileType = "png";
 		File myFile = new File(filePath);
@@ -94,7 +94,7 @@ public class generateQR {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("\nYou have successfully created QR Code for " + QR);
+//		System.out.println("\nYou have successfully created QR Code for " + QR);
 	}
 	
 		

@@ -77,7 +77,11 @@
 			<artifactId>json</artifactId>
 			<version>20160810</version>
 		</dependency>
-
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>1.4.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>

@@ -27,6 +27,8 @@ public class getShortUrl {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		URIBuilder builder = new URIBuilder("https://www.googleapis.com/urlshortener/v1/url");
 		builder.addParameter("key", "AIzaSyCV-TQ12DyCmUk3rCsclLQsKA0D4tMhTo0");
+		builder.addParameter("quotaUser", "me");
+		builder.addParameter("userIp", "10.233.102.64");
 		URI uri = builder.build();
 		HttpPost request = new HttpPost(uri);
 
