@@ -24,32 +24,32 @@ public class App {
 		ArrayList<WarehouseModel> warehouse =  generateQR.getAllWarehouses();
 //		HashMap<String, String> check = new HashMap<String, String>();
 		ArrayList<EmailModel> heads = ReadFileHeadOffice.readFileToListByLine();
-		
+		System.out.println(warehouse.size());
 
-		    for (int j = 0; j < warehouse.size(); j++) {
+		    for (int j = 1600; j < 1800; j++) {
 		    	System.out.println(j);
 		    	if(j % 5 == 0) {
-		    		Thread.sleep(3000);
+		    		Thread.sleep(4000);
 		    	}
 		    	ArrayList<String> recipientsMail = new ArrayList<String>();
-		    	recipientsMail.add("litvinov.do@novaposhta.ua");
+//		    	recipientsMail.add("litvinov.do@novaposhta.ua");
 //		    	recipientsMail.add("kucher.vg1@novaposhta.ua");
 //		    	recipientsMail.add("danylik.a@novaposhta.ua");
-//		    	boolean check = false;
-//		    	for (int i = 0; i < heads.size(); i++) {
-//		    		
-//		    		if(heads.get(i).getRef().equals(warehouse.get(j).getRef()) && EmailValidator.getInstance().isValid(heads.get(i).getEmail())){
-//			    		
-//		    			recipientsMail.add(heads.get(i).getEmail());
-//		    			check = true;
-//			    	}
-//
-//				}
-//		    	if(!check){
-//		    	writerResult.write(warehouse.get(j).getRef() + ";" + warehouse.get(j).getCity() + ";" + warehouse.get(j).getNumber() + ";" + warehouse.get(j).getDescription());
+		    	boolean check = false;
+		    	for (int i = 0; i < heads.size(); i++) {
+		    		
+		    		if(heads.get(i).getRef().equals(warehouse.get(j).getRef()) && EmailValidator.getInstance().isValid(heads.get(i).getEmail())){
+			    		
+		    			recipientsMail.add(heads.get(i).getEmail());
+		    			check = true;
+			    	}
+
+				}
+		    	if(!check){
+		    	writerResult.write(warehouse.get(j).getRef() + ";" + warehouse.get(j).getCity() + ";" + warehouse.get(j).getNumber() + ";" + warehouse.get(j).getDescription());
 		    	writerResult.write(System.lineSeparator());
 		    	writerResult.flush();
-//		    	}
+		    	}
 			
 			
 		  
@@ -78,15 +78,16 @@ public class App {
 				writerResultMails.write(";" + warehouse.get(j).getRef() + ";" + warehouse.get(j).getCity() + ";" + warehouse.get(j).getNumber() + ";" + warehouse.get(j).getDescription());
 				writerResultMails.write(System.lineSeparator());
 				writerResultMails.flush();
-				break;
+
 			} catch (Exception e) {
+				e.printStackTrace();
 				writerResultNoSendMails.write(e.getMessage() + ";" + warehouse.get(j).getRef() + ";" + warehouse.get(j).getCity() + ";" + warehouse.get(j).getNumber() + ";" + warehouse.get(j).getDescription());
 				for (int i = 0; i < recipientsMail.size(); i++) {
 					writerResultNoSendMails.write(";" + recipientsMail.get(i));
 				}
 				writerResultNoSendMails.write(System.lineSeparator());
 				writerResultNoSendMails.flush();
-				break;
+
 			}
 			
 			
